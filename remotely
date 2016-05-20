@@ -4,6 +4,11 @@
 # permitted in any medium without royalty provided the copyright notice and this
 # notice are preserved. This file is offered as-is, without any warranty.
 
+if [ $# = 0 ]; then
+    echo "Usage: $0 command [argument ...]" >&2
+    exit
+fi
+
 # recursion is used to keep process substitutes alive
 main () {
     for arg in "${@:i+1}"; do
@@ -12,7 +17,7 @@ main () {
         fi
         let i++
     done
-    exec "$@"
+    exec -- "$@"
 }
 
 i=0
