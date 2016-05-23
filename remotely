@@ -13,7 +13,7 @@ fi
 main () {
     for arg in "${@:i+1}"; do
         if [[ "$arg" =~ ^[[:alpha:]][[:alnum:]+.-]*:// ]]; then
-            main "${@:1:i}" <(curl -Ss "$arg") "${@:i+2}"
+            main "${@:1:i}" <(curl -LSs "$arg") "${@:i+2}"
         fi
         let i++
     done
